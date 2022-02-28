@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+
+<%- include("./../head/head") -%>
+
+<body>
+
+	<div class="gtco-loader"></div>
+
+	<div id="page">
+        <%- include("./../navbar/navbar") -%>
+        <% if(isHome){ %>
+		    <%- include("./../header/header-index") -%>
+        <%}else{%>
+            <%- include("./../header/header") -%>
+        <%}%>
