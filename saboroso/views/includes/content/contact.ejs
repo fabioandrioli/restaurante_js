@@ -4,7 +4,18 @@
             <div class="col-md-12">
                 <div class="col-md-6 animate-box">
                 <h3>Entre em Contato</h3>
-                <form action="#">
+                <div class="col-md-6 animate-box">
+                    <%if(typeof error === "string" ){%>
+                        <div class="alert alert-danger">
+                            <%= error %>
+                        </div>
+                    <%}%>
+                    <%if(typeof success === "string" ){%>
+                        <div class="alert alert-success">
+                            <%= success %>
+                        </div>
+                    <%}%>
+                <form action="/contact-form" method="post">
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="sr-only" for="name">Nome</label>

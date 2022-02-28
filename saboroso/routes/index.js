@@ -61,7 +61,7 @@ router.get('/services', function(req, res, next) {
 });
 
 router.get('/contact', function(req, res, next) {
-  contact.render(res);
+  contact.render(req,res);
 });
 
 router.post('/contact-form', function(req, res, next) {
