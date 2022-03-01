@@ -2,10 +2,24 @@ var express = require('express');
 var router = express.Router();
 var user = require('../includes/user');
 
+
+router.use((req,res, next) => {
+    if(['/login'].indexOf(req.url) === -1 && !req.session.user){
+        res.redirect("/admin/login");
+    }else{
+        next();
+    }
+});
+
 router.get("/",function(req,res, next){
     res.render('admin/index', {
 
     });
+});
+
+router.get("/logout",function(req,res, next){
+   delete req.session.user;
+   res.redirect("/admin/login");
 });
 
 router.get("/login",function(req,res, next){
