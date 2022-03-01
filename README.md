@@ -20,3 +20,13 @@ usa o comando "set DEBUG=saboroso:* & npm start"
 npm bower -g
 depois que instalarmos o bower
 rode o comando bower install dentro da pasta admin do projeto.
+
+# Usando RedisStore
+Temos que instalar 3 libs
+1) - Redis
+2) - connect-redis
+3) - express-session;
+Depois devemos baixar o instalador do redis.
+E devemos configurar o redis client corretamente.
+Assim iniciaremos o modo sessão.
+versao do redis instalado no npm "npm install --save express-session connect-redis@3.3.3"
