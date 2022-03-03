@@ -36,16 +36,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1.</td>
-                  <td><img src="dist/img/boxed-bg.jpg" alt="" style="height: 18px;"></td>
-                  <td>Update software</td>
-                  <td>Diuretics paradis num copo é motivis de denguis.</td>
-                  <td>R$1,99</td>
-                  <td><button type="button" class="btn btn-xs btn-info btn-update" data-toggle="modal" data-target="#modal-update"><i
-                        class="fa fa-pencil"></i> Editar</button>&nbsp;<button type="button" class="btn btn-xs btn-danger btn-delete"><i
-                        class="fa fa-trash"></i> Excluir</button></td>
-                </tr>
+                <% data.forEach((menu) => { %>
+                  <tr data-menu = "<%= JSON.stringify(menu) %>">
+                    <td><%= menu.id %></td>
+                    <!-- Colocar uma barra no começo para referenciar que esta na pasta publica quando for foto -->
+                    <td><img src="/<%= menu.photo %>" alt="" style="height: 18px;"></td>
+                    <td><%= menu.title %></td>
+                    <td><%= menu.description %></td>
+                    <td><%= menu.price %></td>
+                    <td><button type="button" class="btn btn-xs btn-info btn-update" data-toggle="modal" data-target="#modal-update"><i
+                          class="fa fa-pencil"></i> Editar</button>&nbsp;<button type="button" class="btn btn-xs btn-danger btn-delete"><i
+                          class="fa fa-trash"></i> Excluir</button></td>
+                  </tr>
+                  <% })%>
               </tbody>
             </table>
           </div>
@@ -88,7 +91,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-success">Salvar</button>
+              <button type="submit"  class="btn btn-info">Salvar</button>
             </div>
           </form>
         </div>
@@ -129,7 +132,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-info">Salvar</button>
+              <button type="submit"  class="btn btn-info">Salvar</button>
             </div>
           </form>
         </div>
@@ -139,3 +142,23 @@
     </div>
 
   <%- include("./includes/footer.ejs") -%>
+  <script>
+    let formCreate = document.querySelector("#modal-create form");
+    let buttonForm = document.querySelector("#modal-create #buttonForm");
+   console.log(buttonForm);
+
+   formCreate.addEventListener('submit', e => {
+      e.preventDefault();
+
+      let formCreateData = new FormData(formCreate);
+
+      fetch("/admin/menus",{
+        method:"POST",
+        body: formCreateData,
+      })
+      .then(response => response.json())
+      .then(json => {
+        console.log("JSON",json);
+      })
+    });
+  </script>

@@ -30,3 +30,7 @@ Depois devemos baixar o instalador do redis.
 E devemos configurar o redis client corretamente.
 Assim iniciaremos o modo sessão.
 versao do redis instalado no npm "npm install --save express-session connect-redis@3.3.3"
+
+# Usando Formidable
+Para recuperar os dados que vieram do formulario e mandar para o banco de dados.
+npm install formidable.
